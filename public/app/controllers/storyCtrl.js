@@ -23,9 +23,8 @@ angular.module('storyCtrl', ['storyService'])
 // we creating a story and if it is success writing value from API return withc is ???
 				vm.message = data.message;
 
-// push the story we can see it in an instance reatime
-				vm.stories.push(data);
-
+// push the story we can see it in an instance reatime // post empty block
+				// vm.stories.push(data);
 			});
 	};
 
@@ -33,18 +32,12 @@ angular.module('storyCtrl', ['storyService'])
 	socketio.on('story', function(data) {
 		vm.stories.push(data);
 	});
-
 })
-
 
 .controller('AllStoriesController', function(stories, socketio) {
 	var vm = this;
 	vm.stories = stories.data;
-
 	socketio.on('story', function(data) {
 		vm.stories.push(data);
 	});
-
-
-
 })
